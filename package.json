@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/abbyblachman/node-pdf-gen/issues"
   },
-  "homepage": "https://github.com/abbyblachman/node-pdf-gen#readme"
+  "homepage": "https://github.com/abbyblachman/node-pdf-gen#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "html-pdf": "^2.2.0",
+    "inquirer": "^7.0.0"
+  }
 }
