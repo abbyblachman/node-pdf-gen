@@ -15,8 +15,17 @@ inquirer
     name: "color"
   }])
   .then(function(response) {
+    var starGaze = 0;
+    const queryUrlOne = `https://api.github.com/users/${response.username}/repos`
+    axios.get(queryUrlOne).then(function(response) {
+      const responses = response.data;
+      responses.forEach(function(response){
+        starGaze += response.stargazers_count;
+      })
+      console.log(starGaze);
+    })
     const queryUrl = `https://api.github.com/users/${response.username}`;
-    axios.get(queryUrl).then(function(res) {
+    axios.get(queryUrl).then(async function(res) {
       const colorName = response.color;
       const profileImg = res.data.avatar_url;
       const userName = res.data.login;
@@ -82,7 +91,7 @@ inquirer
     <div>Number of public repositories: ${publicRepos} </div>
     <div>Number of followers: ${followers} </div>
     <div>Number following: ${following} </div>
-    <div>Number of GitHub stars: </div>
+    <div>Number of GitHub stars: ${starGaze}</div>
     </div>
 </body>
 </html>
